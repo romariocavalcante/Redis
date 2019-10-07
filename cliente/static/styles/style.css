@@ -1,0 +1,155 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}#nav{
+	background-color: #8A0829;			
+	box-shadow: 1px 2px 0px 1px red;
+}#nav2{
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 1px 2px 0px 1px red;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px; 
+	background-color: #8A0829;
+}#container-pai{
+	margin-top: 3%;
+	margin-left: 11%;
+	width: 35%;
+	height: 430px;
+	float: left;
+}#container-filho{
+	height: 388px;
+	background-color: #8A0829;
+	box-shadow: 1px 2px 0px 1px red;
+}#container-pai_2{
+	margin-top: 3%;
+	margin-left: 8%;
+	width: 35%;
+	height: 430px;
+	float: left;
+}#container-filho_2{
+	height: 388px;
+	background-color: #8A0829;
+	box-shadow: 1px 2px 0px 1px red;
+	overflow: auto;
+}.p{
+	color: black;
+	font-family: "Permanent Marker";
+}#cards{
+	margin-top: 1%;
+	width: 90%;
+	height: 29.5%;
+	border: 1px solid black;
+	background-color: white;	
+}.h2{    		
+	font-family: "Permanent Marker";
+}#h2_1{
+	margin-left: 10%;
+}#h2_2{
+	margin-left: 45%;
+}#h2_3{
+	margin-left: auto;
+	margin-right: auto;
+}.h3{
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Permanent Marker";
+}#h3_pesquisar{
+	width: 100%;
+	height: 40px;
+}.label{
+	font-family: "Permanent Marker";
+}input::-webkit-input-placeholder {
+	color: #00ADEE;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: normal;
+	font-size: 12px;
+}#btn-form{
+	margin-left: 3%;
+}.form-control{
+	width: 200%;
+}.footer{
+    width: 100%;
+    height: 7%;
+    position: absolute;
+	bottom: 0;
+	background-color: #8A0829;
+	box-shadow: 0px -4px 0px  red;
+}#copy-div{
+	margin-top: 0.5%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 26%;
+}#copy{
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: "Permanent Marker";
+}
+/* Pesquisar */
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 35px;
+    background-color: ;
+    border-radius: 30px;
+    padding: 0px;
+    }
+
+    .search_input{
+    color: black;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    margin-top: -3px;
+    font-size: 25px;
+    caret-color:transparent;
+    line-height: 42px;
+    transition: width 0.2s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 20px;
+    width: 180px;
+    caret-color:red;
+    transition: width 0.1s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 35px;
+    width: 35px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
+    #img-search-icon{
+    	margin-top: -5px;
+    }
+
+    #a{
+    	width: 46%;
+    	float: right;
+    	margin-right: -15px;
+    }
+    #delete{
+    	width: 16%;
+    	margin-top: -20%;
+    	float: right;
+    }
+    @font-face{
+    font-family:'Glyphicons Halflings';
+    src:url(../fonts/glyphicons-halflings-regular.eot);
+    src:url(../fonts/glyphicons-halflings-regular.woff2);
+    src:url(../fonts/glyphicons-halflings-regular.woff);
+}
