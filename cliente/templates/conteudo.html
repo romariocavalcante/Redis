@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+	{% for heroi in lista %}
+		<div class="container rounded" id="cards"  onmouseover="show_excluir(this)" onmouseout="hide_excluir(this)" >
+			<table id="table-cards">
+				<tr>
+					<td style="width: 20%;">Nome:</td>
+					<td style="width: 60%;">{{heroi.nome}}</td>
+				</tr>
+				<tr>
+					<td style="width: 20%;">Universo:</td>
+					<td style="width: 60%;">{{heroi.universo}}</td>
+				</tr>
+				<tr>
+					<td style="width: 20%;">Habilidade:</td>
+					<td style="width: 60%;">{{heroi.habilidade}}</td>
+				</tr>
+			</table>				
+			<div id="btn-excluir">
+				
+			</div>				
+		</div>
+	{% endfor %}
+{% endblock %}

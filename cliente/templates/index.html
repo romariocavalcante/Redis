@@ -3,82 +3,119 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
+	<title>Django e Redis</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Django e Redis</title>
+    <!--Javascript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--CSS-->
     <link rel="stylesheet" type="text/css" href="static/styles/style.css">
 </head>
-<body>	
-	<!--Barra de navegação-->
+<body>
+	<div class="geral">
+	<!---------------------------Barra de navegação--------------------------------------------->
 	<nav class="navbar navbar-expand-lg navbar-light" id="nav">
 		<h2 id="h2_1" class="h2 text-white">Banco de Dados II</h2>
   		<h2 id="h2_2" class="h2 text-white"> <img src="{% static "img/redis.png" %}" alt="My image" width="35" height="35"> Redis</h2>  
 	</nav>
 
 	<nav class="navbar navbar-expand-lg navbar-light" id="nav2">
-  		<h2 id="h2_3" class="h2 text-white">Torneio de Vilões</h2>  
+  		<h3 id="h3" class="h3 text-white">Torneio de Vilões</h3>  
 	</nav>
-	<!--Formulário de vilões-->
+	
+	<!---------------------------Formulário de vilões------------------------------------------->
 	<div class="container rounded text-red" id="container-pai">
-		<h3 class="h3 text-danger" id="h3">Cadastre seu Vilão</h3>
+		<h4 class="h4 text-danger" id="h4">Cadastre seu Vilão</h4>
 		<div class="container rounded text-white" id="container-filho"><br>
-			<form id="form">
+			<form method="POST" id="form">
+				{% csrf_token %}
 				<div class="form-group">
 					<div class="form-group col-md-6">
-						<label class="label" for="inputEmail4">Nome</label>
-						<input type="text" class="form-control" id="inputName" placeholder="nome do vilão">
+						<label class="label" for="nome">Nome</label>
+						<input type="text" class="form-control" id="nome" placeholder="nome do vilão">
 					</div>
 					<div class="form-group col-md-6">
-						<label class="label" for="inputPassword4">Universo</label>
-						<input type="text" class="form-control" id="inputUniverso" placeholder="ex: marvel, dc comics, dysney...">	
+						<label class="label" for="universo">Universo</label>
+						<input type="text" class="form-control" id="universo" placeholder="ex: marvel, dc comics, dysney...">	
 					</div>		
 					<div class="form-group col-md-6">
-						<label class="label" for="inputAddress">Habilidade</label>
-						<input type="text" class="form-control" id="inputAbilidade" placeholder="ex: invulnerável, vôa, super velocidade...">
+						<label class="label" for="habilidade">Habilidade</label>
+						<input type="text" class="form-control" id="habilidade" placeholder="ex: invulnerável, vôa, super velocidade...">
 					</div>					
 				</div>
 				<button id="btn-form" type="submit" class="btn btn-secondary">cadastrar</button>
 			</form>
 		</div>
 	</div>
-	<div class="container rounded text-red" id="container-pai_2">
-		<div class="container" id="h3_pesquisar">
-			<h3 class="h3 text-danger" id="h3">Vilões cadastrados
-				<!-----------Pesquisar---------------------------------------------------------->
-				<div id="a">
-			      <div class="d-flex justify-content-center h-10" id="b">
-			        <div class="searchbar">
-			          <input class="search_input" type="text" name="" placeholder="Search...">
-			          <a href="#" class="search_icon"><img id="img-search-icon" src="{% static "img/search-icon.png" %}" alt="search-icon" width="25" height="25"></i></a>			          	          
-			        </div>
-			      </div>
-			    </div>
-			    <!------------------------------------------------------------------------------>
-		    </h3>
+	<!------------------------Vilões Cadastrados------------------------------------------------>
+	<div class="container rounded text-red" id="container-pai">		
+		<h4 class="h4 text-danger" id="h4">Vilões cadastrados
+			<!-----------Pesquisar---------------------------------------------------------->
+			<div id="a">
+		      <div class="d-flex justify-content-center h-10" id="b">
+		        <div class="searchbar">
+		          <input class="search_input" type="text" name="" placeholder="Search...">
+		          <a href="#" class="search_icon"><img id="img-search-icon" src="{% static "img/search-icon.png" %}" alt="search-icon" width="25" height="25"></i></a>			          	          
+		        </div>
+		      </div>
+		    </div>
+		    <!------------------------------------------------------------------------------>
+	    </h4>
+		<!--Cards dos vilões-->
+		<div class="container rounded" id="container-filho_2"><br>
+			{% block conteudo %}	
+			{% endblock %}
 		</div>
-		<div class="container rounded text-white" id="container-filho_2"><br>
-			<div class="container rounded text-white" id="cards">
-				<p class="p">Nome: &nbsp &nbsp &nbsp &nbsp  Loki</p>
-				<p class="p">Universo:  &nbsp &nbsp   Marvel</p>
-				<p class="p">Habilidade: &nbsp  Deus das trapaças</p>
-				<button class="btn btn-secondary" id="delete">
-					<span class="glyphicon glyphicon-remove">
-				</button>
-			</div>
-			
-			
-		</div>
-	</div>
-	
 
+	</div>
+	<!------------------------------------------------------------------------------------------->
 	
+	<!--Tela do cache Redis-->
+	<div class="container rounded text-danger" id="container-pai">
+		<h4 class="h4 text-danger" id="h4">Cache Redis</h4>
+		<div class="container rounded" id="container-filho_3">
+
+			<div class="container rounded" id="cards_2">
+				<table id="table-cards">
+					<tr>
+						<td style="width: 20%;">Nome:</td>
+						<td style="width: 60%;">Loki</td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">Universo:</td>
+						<td style="width: 60%;">Marvel</td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">Habilidade:</td>
+						<td style="width: 60%;">Deus das trapaças</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+	</div>	
+	</div>
+	<!--------------------Rodapé---------------------------------------------------------------->
 	<footer class="footer">
 		<div id="copy-div">
 			<p id="copy">Copyright&copy 2019 Romário Cavalcante.</p>
 		</div>
 		
 	</footer>
+	<!----------------------------------------------------------------------------------------->
+
+	<!-----------funções javascript------------------------------------------------>
+	<script>
+		function show_excluir(){
+			$('#btn-excluir').show();
+		}
+		function hide_excluir(){
+			$('#btn-excluir').hide();
+		}
+	</script>
+	<!----------------------------------------------------------------------------->
 </body>
 </html>
+
